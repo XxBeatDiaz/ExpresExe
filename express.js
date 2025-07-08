@@ -75,10 +75,10 @@ app.post('/action', async (req, res) => {
         const joke = await response.json();
         res.json({ msg: joke });
     }
-    else if (action === "cat fact"){
+    else if (action === "cat fact") {
         const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=70&breed_ids=beng&api_key=live_cGnyy7p9OMb0DGb7L2hQvLKmh4eNpRZjrRCVPsjMIBdTaUafMHzSPhhJsMnWvnh5`);
-        const fact = await response.json();
-        res.json({msg: fact.length})
+        const data = await response.json();
+        res.json({ data: data.length })
     }
 });
 
