@@ -56,7 +56,6 @@
 
 
 //part3
-//1
 import express from "express";
 
 const app = express();
