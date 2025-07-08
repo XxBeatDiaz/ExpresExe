@@ -30,10 +30,22 @@
 import express from "express";
 
 const server = express();
-server.get('/test', (req, res) => {
-    server.get('/greet/:name', (req, res) => {
-        
-    })
+
+server.get('/greet/:name', (req, res) => {
+    console.log(`i got name: ${req.params.name}`);
+    res.send({msg: req.params.name});
+});
+
+server.get('/test', async (req, res) => {
+    const name = "bob";
+    const response = await fetch(`http://localhost:3000/greet/${name}`);
+    const data = await response.json();
+
+    if (data.msg && data.msg.includes(name)) {
+        res.json({ result: "ok" });
+    } else {
+        res.json({ result: "fail" });
+    }
 })
 
 server.listen(3000, () => {
